@@ -1,1 +1,618 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ساعى الأطلال — نموذج الأسئلة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d6e4f;
+      --primary-dark: #084a36;
+      --primary-light: #e8f5f0;
+      --accent: #f0a500;
+      --accent-soft: #fff8e6;
+      --text: #1a2b28;
+      --text-muted: #5a6f6a;
+      --border: #d4e5df;
+      --bg: #f7faf9;
+      --card: #ffffff;
+      --shadow: 0 4px 24px rgba(13, 110, 79, 0.08);
+      --radius: 12px;
+      --error: #c0392b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 2rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .hero h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; margin-bottom: 0.35rem; }
+    .hero .subtitle { font-size: 0.98rem; opacity: 0.92; max-width: 520px; margin: 0 auto 1rem; }
+    .hero-meta { font-size: 0.85rem; opacity: 0.85; }
+
+    .hero a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      color: #fff;
+      background: rgba(0,0,0,0.2);
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .hero a:hover { background: rgba(0,0,0,0.35); }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .intro {
+      background: var(--accent-soft);
+      border: 1px solid #f0d080;
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      font-size: 0.93rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .q-section-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin: 1.5rem 0 0.75rem;
+      font-size: 0.95rem;
+      padding: 0.35rem 0.75rem;
+      background: var(--primary-light);
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .field-group {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .field-group:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .field-label {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .q-num {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+
+    .field-label strong { display: block; color: var(--text); font-size: 0.98rem; }
+    .field-label .req { color: var(--error); margin-right: 0.2rem; }
+
+    .hint {
+      display: block;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    .inputs { margin-right: 2.5rem; }
+
+  .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.45rem;
+      cursor: pointer;
+      font-size: 0.93rem;
+    }
+
+    .option input { margin-top: 0.35rem; flex-shrink: 0; accent-color: var(--primary); }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      margin-top: 0.35rem;
+    }
+
+    textarea { min-height: 88px; resize: vertical; }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(13, 110, 79, 0.12);
+    }
+
+    .field-error {
+      color: var(--error);
+      font-size: 0.85rem;
+      margin-top: 0.35rem;
+      display: none;
+    }
+
+    .field-group.invalid .field-error { display: block; }
+    .field-group.invalid input[type="text"],
+    .field-group.invalid textarea { border-color: var(--error); }
+
+    .submit-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-secondary {
+      background: var(--card);
+      color: var(--primary-dark);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover { background: var(--primary-light); }
+
+    .footer-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 1rem;
+    }
+
+    @media print {
+      .submit-row, .success-actions, .hero a { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>ساعى الأطلال</h1>
+    <p class="subtitle">نموذج إجابة الأسئلة — لتحديد متطلبات المشروع بدقة</p>
+    <p class="hero-meta">إعداد: المطور عبدالله البكري</p>
+    <a href="index.html">← العودة لتصور المشروع الكامل</a>
+  </header>
+
+  <div class="container">
+
+    <div id="formWrap">
+      <form
+        id="requirementsForm"
+        action="https://formsubmit.co/albkre65@gmail.com"
+        method="POST"
+        novalidate
+      >
+        <input type="hidden" name="_subject" value="إجابة جديدة — ساعى الأطلال">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="thankyou.html">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="card">
+          <h2>بيانات التواصل</h2>
+          <div class="intro">نستخدمها للرجوع إليك بعد مراجعة الإجابات.</div>
+
+          <div class="field-group" data-required="text" data-name="contact_name">
+            <label class="field-label">
+              <span class="q-num">◆</span>
+              <span><span class="req">*</span><strong>الاسم / اسم المنشأة</strong></span>
+            </label>
+            <div class="inputs">
+              <input type="text" name="contact_name" required placeholder="مثال: أحمد — منصة ساعى الأطلال">
+              <span class="field-error">يرجى إدخال الاسم</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="text" data-name="contact_phone">
+            <label class="field-label">
+              <span class="q-num">◆</span>
+              <span><span class="req">*</span><strong>رقم الجوال</strong></span>
+            </label>
+            <div class="inputs">
+              <input type="tel" name="contact_phone" required placeholder="05xxxxxxxx">
+              <span class="field-error">يرجى إدخال رقم الجوال</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">
+              <span class="q-num">◆</span>
+              <span><strong>البريد الإلكتروني</strong> <span style="font-weight:400;color:var(--text-muted)">(اختياري)</span></span>
+            </label>
+            <div class="inputs">
+              <input type="email" name="contact_email" placeholder="example@email.com">
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>أسئلة المشروع</h2>
+          <p class="intro">إجاباتك تحدد شكل التطبيق وعرض السعر. لا مشكلة إن لم تكن متأكداً — اكتب ما تتوقعه وسنناقشه.</p>
+
+          <p class="q-section-title">عن نطاق المنصة</p>
+
+          <div class="field-group" data-required="text" data-name="q1_answer">
+            <label class="field-label">
+              <span class="q-num">1</span>
+              <span>
+                <span class="req">*</span><strong>هل المنصة «توصيل أي شيء» من أي مجال؟</strong>
+                <span class="hint">أم تبدأ بمجالات محددة ثم تتوسع؟ اذكر المجالات عند الإطلاق الأول — مثلاً: مطاعم، بقالات، صيدليات.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <textarea name="q1_answer" required placeholder="اكتب إجابتك والمجالات التي تريدها عند البداية..."></textarea>
+              <span class="field-error">يرجى الإجابة على هذا السؤال</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="radio" data-name="q2_cart">
+            <label class="field-label">
+              <span class="q-num">2</span>
+              <span>
+                <span class="req">*</span><strong>السلة: متجر واحد (أ) أم أكثر من متجر (ب)؟</strong>
+                <span class="hint">نوصي بالخيار أ للبداية — أسرع وأقل مشاكل (خصوصاً للطعام).</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q2_cart" value="أ — طلب واحد = متجر واحد (موصى به)"> أ — طلب واحد = متجر واحد (موصى به)</label>
+              <label class="option"><input type="radio" name="q2_cart" value="ب — سلة من أكثر من متجر"> ب — سلة من أكثر من متجر</label>
+              <label class="option"><input type="radio" name="q2_cart" value="غير متأكد — أريد استشارتكم"> غير متأكد — أريد استشارتكم</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <p class="q-section-title">عن التشغيل والدفع</p>
+
+          <div class="field-group" data-required="checkbox" data-name="q3_payment">
+            <label class="field-label">
+              <span class="q-num">3</span>
+              <span>
+                <span class="req">*</span><strong>ما طرق الدفع التي تريدها؟</strong>
+                <span class="hint">يمكن اختيار أكثر من واحدة: نقد عند الاستلام · دفع إلكتروني · تحويل يدوي + رقم العملية + صورة الإيصال.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="checkbox" name="q3_payment" value="نقد عند الاستلام"> نقد عند الاستلام</label>
+              <label class="option"><input type="checkbox" name="q3_payment" value="دفع إلكتروني (بطاقة / محفظة)"> دفع إلكتروني (بطاقة / محفظة)</label>
+              <label class="option"><input type="checkbox" name="q3_payment" value="تحويل يدوي + إرفاق رقم العملية وصورة الإيصال"> تحويل يدوي + إرفاق رقم العملية وصورة الإيصال</label>
+              <span class="field-error">اختر طريقة دفع واحدة على الأقل</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="radio" data-name="q4_cities">
+            <label class="field-label">
+              <span class="q-num">4</span>
+              <span>
+                <span class="req">*</span><strong>هل التوصيل داخل مدينة واحدة أم عدة مدن؟</strong>
+                <span class="hint">إذا عدة مدن: كل مدينة قد تحتاج تجارها ومندوبيها وأسعار توصيل منفصلة.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q4_cities" value="مدينة واحدة"> مدينة واحدة</label>
+              <label class="option"><input type="radio" name="q4_cities" value="عدة مدن"> عدة مدن</label>
+              <label class="option"><input type="radio" name="q4_cities" value="مدينة واحدة الآن والتوسع لاحقاً"> مدينة واحدة الآن والتوسع لاحقاً</label>
+              <textarea name="q4_cities_detail" placeholder="إن عدة مدن: اذكر أسماء المدن أو من أين تبدأ..."></textarea>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="radio" data-name="q5_dispatch">
+            <label class="field-label">
+              <span class="q-num">5</span>
+              <span>
+                <span class="req">*</span><strong>كيف يُوزَّع الطلب على المندوبين؟</strong>
+                <span class="hint"><strong>طريقة 1:</strong> إشعار لكل المندوبين — أول من يقبل يرتبط بالطلب. <strong>طريقة 2:</strong> موظفك يعيّن مندوباً يدوياً. أو الجمع بينهما.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q5_dispatch" value="أول مندوب يقبل (إشعار للجميع)"> أول مندوب يقبل (إشعار للجميع)</label>
+              <label class="option"><input type="radio" name="q5_dispatch" value="تعيين يدوي من لوحة الإدارة"> تعيين يدوي من لوحة الإدارة</label>
+              <label class="option"><input type="radio" name="q5_dispatch" value="الاثنان معاً"> الاثنان معاً</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="checkbox" data-name="q6_revenue">
+            <label class="field-label">
+              <span class="q-num">6</span>
+              <span>
+                <span class="req">*</span><strong>كيف تربح من كل طلب؟</strong>
+                <span class="hint">عمولة · توصيل حسب المسافة (يتطلب موقع التاجر والزبون على الخريطة) · رسوم ثابتة لكل منطقة. يمكن الجمع.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="checkbox" name="q6_revenue" value="عمولة على الطلب"> عمولة على الطلب</label>
+              <label class="option"><input type="checkbox" name="q6_revenue" value="رسوم توصيل حسب المسافة (خريطة)"> رسوم توصيل حسب المسافة (خريطة)</label>
+              <label class="option"><input type="checkbox" name="q6_revenue" value="رسوم توصيل ثابتة لكل منطقة"> رسوم توصيل ثابتة لكل منطقة</label>
+              <label class="option"><input type="checkbox" name="q6_revenue" value="غير متأكد — أريد اقتراحكم"> غير متأكد — أريد اقتراحكم</label>
+              <textarea name="q6_revenue_detail" placeholder="تفاصيل: من يدفع العمولة؟ نسبة تقريبية؟ سعر الكيلومتر؟ ..."></textarea>
+              <span class="field-error">اختر خياراً واحداً على الأقل أو اكتب في التفاصيل</span>
+            </div>
+          </div>
+
+          <p class="q-section-title">عن التطبيق والتجار</p>
+
+          <div class="field-group" data-required="radio" data-name="q7_lang">
+            <label class="field-label">
+              <span class="q-num">7</span>
+              <span>
+                <span class="req">*</span><strong>هل التطبيق متعدد اللغات؟</strong>
+                <span class="hint">عربي فقط، أو عربي + إنجليزي، وغيرها.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q7_lang" value="عربي فقط"> عربي فقط</label>
+              <label class="option"><input type="radio" name="q7_lang" value="عربي + إنجليزي"> عربي + إنجليزي</label>
+              <label class="option"><input type="radio" name="q7_lang" value="أخرى"> أخرى (حدد في الملاحظات)</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="radio" data-name="q8_subscription">
+            <label class="field-label">
+              <span class="q-num">8</span>
+              <span>
+                <span class="req">*</span><strong>هل توجد اشتراكات شهرية للتجار؟</strong>
+                <span class="hint">أم الربح فقط من عمولة الطلبات ورسوم التوصيل؟</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q8_subscription" value="نعم — اشتراك شهري"> نعم — اشتراك شهري</label>
+              <label class="option"><input type="radio" name="q8_subscription" value="لا — عمولة وتوصيل فقط"> لا — عمولة وتوصيل فقط</label>
+              <label class="option"><input type="radio" name="q8_subscription" value="الاثنان معاً"> الاثنان معاً</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="radio" data-name="q9_tracking">
+            <label class="field-label">
+              <span class="q-num">9</span>
+              <span>
+                <span class="req">*</span><strong>هل تريد تتبع مباشر للمندوب على الخريطة؟</strong>
+                <span class="hint">للزبون والإدارة معاً، أم للإدارة فقط؟</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q9_tracking" value="نعم — للزبون والإدارة"> نعم — للزبون والإدارة</label>
+              <label class="option"><input type="radio" name="q9_tracking" value="نعم — للإدارة فقط"> نعم — للإدارة فقط</label>
+              <label class="option"><input type="radio" name="q9_tracking" value="لا في البداية"> لا في البداية</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="radio" data-name="q10_products">
+            <label class="field-label">
+              <span class="q-num">10</span>
+              <span>
+                <span class="req">*</span><strong>هل كل تاجر يدير منتجاته بنفسه؟</strong>
+                <span class="hint">من لوحته، أم تدخلون المنتجات عنهم في البداية؟</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q10_products" value="نعم — كل تاجر بنفسه"> نعم — كل تاجر بنفسه</label>
+              <label class="option"><input type="radio" name="q10_products" value="لا — ندخلها نحن في البداية"> لا — ندخلها نحن في البداية</label>
+              <label class="option"><input type="radio" name="q10_products" value="مزيج"> مزيج (بعض التجار بأنفسهم وبعضها ندخله نحن)</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group" data-required="checkbox" data-name="q11_offers">
+            <label class="field-label">
+              <span class="q-num">11</span>
+              <span>
+                <strong>هل تريد نظام عروض؟</strong>
+                <span class="hint">كوبون خصم · خصم على التوصيل · عرض من متجر معيّن · عروض على منتجات داخل صفحة المتجر. اختر ما يناسبك أو اكتب «لا» في الملاحظات.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="checkbox" name="q11_offers" value="لا أريد عروض في البداية"> لا أريد عروض في البداية</label>
+              <label class="option"><input type="checkbox" name="q11_offers" value="كوبون خصم"> كوبون خصم</label>
+              <label class="option"><input type="checkbox" name="q11_offers" value="خصم على التوصيل"> خصم على التوصيل</label>
+              <label class="option"><input type="checkbox" name="q11_offers" value="عرض من متجر معيّن"> عرض من متجر معيّن</label>
+              <label class="option"><input type="checkbox" name="q11_offers" value="عروض على منتجات داخل المتجر"> عروض على منتجات داخل المتجر</label>
+              <textarea name="q11_offers_detail" placeholder="تفاصيل إضافية للعروض..."></textarea>
+            </div>
+          </div>
+
+          <p class="q-section-title">عن المندوبين</p>
+
+          <div class="field-group" data-required="radio" data-name="q12_courier_pay">
+            <label class="field-label">
+              <span class="q-num">12</span>
+              <span>
+                <span class="req">*</span><strong>هل المندوبون بعمولة أم براتب ثابت؟</strong>
+                <span class="hint">بعمولة مع تسوية · براتب شهري · أو راتب + عمولة.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q12_courier_pay" value="عمولة (مستقلون)"> عمولة (مستقلون)</label>
+              <label class="option"><input type="radio" name="q12_courier_pay" value="راتب ثابت (موظفون)"> راتب ثابت (موظفون)</label>
+              <label class="option"><input type="radio" name="q12_courier_pay" value="راتب + عمولة"> راتب + عمولة</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <p class="q-section-title">عن طريقة الطلب</p>
+
+          <div class="field-group" data-required="radio" data-name="q13_order_channel">
+            <label class="field-label">
+              <span class="q-num">13</span>
+              <span>
+                <span class="req">*</span><strong>هل الزبون يطلب فقط من التطبيق، ولا يزال يتصل بالهاتف وتدخلون الطلب أنتم من عندكم في النظام؟</strong>
+                <span class="hint">إذا نعم للهاتف: نضيف شاشة «إنشاء طلب للزبون» في لوحة الإدارة.</span>
+              </span>
+            </label>
+            <div class="inputs">
+              <label class="option"><input type="radio" name="q13_order_channel" value="التطبيق فقط"> التطبيق فقط</label>
+              <label class="option"><input type="radio" name="q13_order_channel" value="التطبيق + الهاتف (إدخال من لوحة الإدارة)"> التطبيق + الهاتف (إدخال من لوحة الإدارة)</label>
+              <label class="option"><input type="radio" name="q13_order_channel" value="الهاتف فقط في البداية"> الهاتف فقط في البداية</label>
+              <span class="field-error">يرجى اختيار خيار</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">
+              <span class="q-num">+</span>
+              <span><strong>ملاحظات إضافية</strong> <span style="font-weight:400;color:var(--text-muted)">(اختياري)</span></span>
+            </label>
+            <div class="inputs">
+              <textarea name="notes_extra" placeholder="أي فكرة أو طلب لم يُذكر في الأسئلة..."></textarea>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn btn-primary">إرسال الإجابات</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <p class="footer-note">
+      ساعى الأطلال — المطور عبدالله البكري<br>
+      بعد الإرسال تصل الإجابات إلى البريد المسجّل في النظام. أول إرسال يتطلب تفعيلاً من رابط FormSubmit.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('requirementsForm');
+      var submitBtn = form.querySelector('button[type="submit"]');
+
+      function getRadio(name) {
+        var el = form.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.value : '';
+      }
+
+      function getCheckboxes(name) {
+        var list = form.querySelectorAll('input[name="' + name + '"]:checked');
+        var vals = [];
+        for (var i = 0; i < list.length; i++) vals.push(list[i].value);
+        return vals.length ? vals.join(' | ') : '';
+      }
+
+      function getText(name) {
+        var el = form.querySelector('[name="' + name + '"]');
+        return el && el.value.trim ? el.value.trim() : '';
+      }
+
+      function validate() {
+        var ok = true;
+        var groups = form.querySelectorAll('.field-group[data-required]');
+        for (var i = 0; i < groups.length; i++) {
+          var g = groups[i];
+          var type = g.getAttribute('data-required');
+          var name = g.getAttribute('data-name');
+          var valid = true;
+
+          if (type === 'text') {
+            valid = !!getText(name);
+          } else if (type === 'radio') {
+            valid = !!getRadio(name);
+          } else if (type === 'checkbox') {
+            valid = !!getCheckboxes(name);
+            if (name === 'q6_revenue' && !valid) {
+              valid = !!getText('q6_revenue_detail');
+            }
+          }
+
+          g.classList.toggle('invalid', !valid);
+          if (!valid) ok = false;
+        }
+        return ok;
+      }
+
+      form.addEventListener('submit', function (e) {
+        if (!validate()) {
+          e.preventDefault();
+          var first = form.querySelector('.field-group.invalid');
+          if (first) {
+            first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'جاري الإرسال...';
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
