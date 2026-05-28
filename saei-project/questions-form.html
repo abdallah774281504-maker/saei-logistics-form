@@ -1,1 +1,854 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ساعى الأطلال — تصور المشروع</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d6e4f;
+      --primary-dark: #084a36;
+      --primary-light: #e8f5f0;
+      --accent: #f0a500;
+      --accent-soft: #fff8e6;
+      --text: #1a2b28;
+      --text-muted: #5a6f6a;
+      --border: #d4e5df;
+      --bg: #f7faf9;
+      --card: #ffffff;
+      --shadow: 0 4px 24px rgba(13, 110, 79, 0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero .subtitle {
+      font-size: 1.05rem;
+      opacity: 0.92;
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .hero-meta { font-size: 0.9rem; opacity: 0.85; }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.25rem 0 0.6rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    .lead { font-size: 1.05rem; font-weight: 500; }
+
+    .highlight {
+      background: var(--primary-light);
+      border-right: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1rem 0;
+      font-size: 0.98rem;
+    }
+
+    .examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .party-block {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .party-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .party-head {
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .party-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .party-head strong { color: var(--primary-dark); font-size: 1.05rem; }
+
+    .party-block ul {
+      margin: 0 3rem 0 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .party-block li { margin-bottom: 0.25rem; }
+
+    /* شرح السلة */
+    .compare {
+      display: grid;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    @media (min-width: 600px) {
+      .compare { grid-template-columns: 1fr 1fr; }
+    }
+
+    .compare-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      background: var(--bg);
+    }
+
+    .compare-box.recommended {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .compare-box h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .compare-box p, .compare-box ul {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .compare-box ul { margin: 0.5rem 1rem 0 0; }
+
+    .compare-box .pros li { color: var(--primary-dark); }
+    .compare-box .cons {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: #fff5f5;
+      border: 1px solid #f0c8c8;
+      border-radius: 8px;
+      list-style: none;
+    }
+    .compare-box .cons li {
+      font-size: 0.85rem;
+      color: #8b3a3a;
+      margin-bottom: 0.3rem;
+      padding-right: 1.1rem;
+      position: relative;
+    }
+    .compare-box .cons li::before {
+      content: '⚠';
+      position: absolute;
+      right: 0;
+      font-size: 0.75rem;
+    }
+
+    .recommend-note {
+      background: var(--primary-light);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+    }
+
+    .badge-rec {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+    }
+
+    .timeline {
+      margin: 1rem 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      position: relative;
+    }
+
+    .timeline li:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      top: 36px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .step-dot {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      z-index: 1;
+    }
+
+    .step-text strong { display: block; color: var(--text); font-size: 0.95rem; }
+    .step-text span { font-size: 0.88rem; color: var(--text-muted); }
+
+    .component {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .component:last-child { margin-bottom: 0; }
+
+    .component-title {
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .component ul {
+      margin: 0 1.25rem 0 0;
+      font-size: 0.93rem;
+      color: var(--text-muted);
+    }
+
+    .component li { margin-bottom: 0.2rem; }
+
+    .income-list { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+
+    .income-item {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      padding-right: 1rem;
+      position: relative;
+    }
+
+    .income-item::before {
+      content: '•';
+      position: absolute;
+      right: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .note-list {
+      margin: 0.5rem 1.25rem 0 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .note-list li { margin-bottom: 0.35rem; }
+
+    .questions-intro {
+      background: var(--accent-soft);
+      border: 1px solid #f0d080;
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .q-section-title {
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 1.25rem 0 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .question {
+      display: flex;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .question:last-child { border-bottom: none; }
+
+    .q-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .question .hint {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-print {
+      display: block;
+      margin: 1.5rem auto 2.5rem;
+      max-width: 780px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .btn-print:hover { background: var(--primary-dark); }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #pdf-export { max-width: 100%; }
+      .container { max-width: 100%; padding: 0 1rem; }
+      .card {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        -webkit-column-break-inside: avoid;
+      }
+      .hero {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .q-section-title {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+      .question {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .compare-box {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .party-block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .component {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .timeline li {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="pdf-export">
+
+  <header class="hero">
+    <h1>ساعى الأطلال</h1>
+    <p class="subtitle">منصة توصيل عامة — تربط أي نوع من المتاجر والمحلات بالعملاء، وتوفّر شبكة موصلين خاصة بك</p>
+    <p class="hero-meta">إعداد: المطور عبدالله البكري · 28 مايو 2026</p>
+  </header>
+
+  <div class="container">
+
+    <section class="card">
+      <h2>الفكرة باختصار</h2>
+      <p class="lead"><strong>ساعى الأطلال</strong> — الهدف: <strong>منصة توصيل لأي شيء</strong> تتم التعاقد معه، مثل: مطعم، بقالة، صيدلية، محلات ملابس، إلكترونيات، أو أي مجال آخر تضيفه لاحقاً من لوحة الإدارة.</p>
+
+      <p>الفكرة ببساطة: أنت تبني <strong>تطبيقاً واحداً</strong> يجمع كل هؤلاء التجار في مكان واحد. الزبون يفتح التطبيق، يختار المتجر الذي يريد، يطلب ما يحتاجه، والطلب يصل للتاجر مباشرة ليجهّزه. بعد التجهيز، <strong>مندوبو ساعى الأطلال</strong> (شبكة توصيل تابعة لك أنت) يستلمون الطلب ويوصّلونه لباب الزبون — دون أن يحتاج كل متجر توظيف مندوبين خاصين به.</p>
+
+      <p>أنت هنا <strong>صاحب المنصة</strong> وليس مجرد متجر واحد: تتعاقد مع التجار، تضبط قواعد التوصيل والأسعار والعمولات، تراقب الطلبات، وتدير المندوبين — كل ذلك من لوحة إدارة مركزية. التاجر يركز على منتجاته وتجهيز الطلبات، وأنت تتولى ربط الطلب بالتوصيل.</p>
+
+      <div class="highlight">
+        <strong>لماذا «أي شيء»؟</strong> لأن المنصة مرنة: اليوم قد تبدأ بمطاعم وبقالات، غداً تضيف صيدليات أو محلات أخرى دون بناء تطبيق جديد — فقط تفعّل تصنيفاً جديداً وتضيف تجاراً جدد.<br><br>
+        <strong>أمثلة مجالات</strong> (ليست حصراً — نحددها معك عند الإطلاق): مطاعم، بقالات، صيدليات، حلويات، مخابز، محلات عطور، قطع غيار، وغيرها.
+      </div>
+
+      <div class="examples">
+        <span class="tag">مطاعم</span>
+        <span class="tag">بقالات</span>
+        <span class="tag">صيدليات</span>
+        <span class="tag">ملابس</span>
+        <span class="tag">إلكترونيات</span>
+        <span class="tag">+ أي مجال لاحقاً</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>من يشارك في النظام؟</h2>
+
+      <div class="party-block">
+        <div class="party-head">
+          <div class="party-icon">🏪</div>
+          <strong>التجار (متاجر / محلات)</strong>
+        </div>
+        <ul>
+          <li>لكل تاجر <strong>لوحة تحكم</strong> يحدد فيها تصنيفه (مطعم، بقالة، إلخ) ويرفع منتجاته</li>
+          <li>يستقبل الطلبات ويحدّث التجهيز: قيد التجهيز → جاهز للاستلام</li>
+          <li>التوصيل على عاتق منصة ساعى الأطلال وليس عليهم</li>
+        </ul>
+      </div>
+
+      <div class="party-block">
+        <div class="party-head">
+          <div class="party-icon">📱</div>
+          <strong>الزبون (العميل)</strong>
+        </div>
+        <ul>
+          <li>يتصفح حسب التصنيف أو يبحث عن متجر أو منتج</li>
+          <li>يضيف للسلة ويطلب (من التطبيق — أو بالهاتف إن اعتمدنا ذلك)</li>
+          <li>يتتبع طلبه حتى التسليم ويقيّم التجربة</li>
+        </ul>
+      </div>
+
+      <div class="party-block">
+        <div class="party-head">
+          <div class="party-icon">🛵</div>
+          <strong>الموصلون (تابعون لساعى الأطلال)</strong>
+        </div>
+        <ul>
+          <li>شبكة واحدة تخدم كل التجار على المنصة</li>
+          <li>يستلمون من موقع التاجر ويوصّلون لعنوان الزبون</li>
+        </ul>
+      </div>
+
+      <div class="party-block">
+        <div class="party-head">
+          <div class="party-icon">⚙️</div>
+          <strong>أنت — صاحب المنصة</strong>
+        </div>
+        <ul>
+          <li>قبول التجار والمندوبين وإدارة التصنيفات (أقسام التطبيق)</li>
+          <li>متابعة الطلبات وتوزيعها على المندوبين</li>
+          <li>رسوم التوصيل، العمولات، والعروض العامة</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- شرح السلة - NEW important section -->
+    <section class="card">
+      <h2>كيف تعمل السلة؟ (مهم)</h2>
+      <p>هناك طريقتان شائعتان — <strong>نحتاج منك تحديد أيها تريد</strong> لأنها تغيّر طريقة عمل التطبيق:</p>
+
+      <div class="compare">
+        <div class="compare-box recommended">
+          <span class="badge-rec">موصى به — الأنسب للبداية</span>
+          <h4>الخيار أ — طلب واحد = متجر واحد</h4>
+          <p>الزبون يفتح متجراً معيناً (مثلاً بقالة X) ويضيف منتجات <strong>من هذا المتجر فقط</strong>، ثم يؤكد الطلب.</p>
+          <ul class="pros">
+            <li>إذا أراد من متجر آخر → <strong>طلب ثانٍ</strong> منفصل (واضح للجميع)</li>
+            <li>مندوب واحد، نقطة استلام واحدة، وقت توصيل أسرع</li>
+            <li>رسوم توصيل واحدة — حساب سهل للزبون</li>
+            <li>أقل تكلفة تطوير وأقل مشاكل تشغيلية</li>
+          </ul>
+        </div>
+        <div class="compare-box">
+          <h4>الخيار ب — سلة من أكثر من متجر</h4>
+          <p>الزبون يضيف من متجر A ومتجر B (أو أكثر) في نفس السلة ويدفع مرة واحدة.</p>
+          <ul>
+            <li>كل تاجر يجهّز جزءه على حدة</li>
+            <li>قد يحتاج أكثر من مندوب أو جولات متعددة</li>
+          </ul>
+          <ul class="cons">
+            <li>إذا الطلب فيه طعام من مطعم + منتجات من متاجر بعيدة → <strong>تأخير طويل</strong></li>
+            <li>الطعام قد <strong>يبرد</strong> قبل ما يصل للزبون</li>
+            <li>عدة متاجر = تعقيد في التسعير ورسوم التوصيل</li>
+            <li>تجربة زبون أسوأ ومشاكل شكاوى أعلى</li>
+            <li>تكلفة تطوير وصيانة أعلى بكثير</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="recommend-note" style="margin-top:1rem">
+        💡 توصيتنا: ابدأ بـ <strong>الخيار أ</strong> — هو المعتاد في تطبيقات التوصيل الناجحة، ويحمي سمعة المنصة من التأخير والطلبات الباردة. الخيار ب يُناقش لاحقاً فقط إذا كان ضرورياً تجارياً.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>كيف يمر الطلب؟</h2>
+      <ol class="timeline">
+        <li>
+          <span class="step-dot">1</span>
+          <div class="step-text">
+            <strong>الزبون يطلب</strong>
+            <span>من التطبيق — أو تدخلون الطلب من عندكم إذا كان بالهاتف (انظر السؤال 13)</span>
+          </div>
+        </li>
+        <li>
+          <span class="step-dot">2</span>
+          <div class="step-text">
+            <strong>الطلب يصل للتاجر ولوحة الإدارة</strong>
+            <span>إشعار فوري ليبدأ التجهيز</span>
+          </div>
+        </li>
+        <li>
+          <span class="step-dot">3</span>
+          <div class="step-text">
+            <strong>التاجر يجهّز</strong>
+            <span>قيد التجهيز → جاهز للاستلام</span>
+          </div>
+        </li>
+        <li>
+          <span class="step-dot">4</span>
+          <div class="step-text">
+            <strong>تعيين مندوب</strong>
+            <span>يدوياً أو تلقائياً — حسب إعداداتك</span>
+          </div>
+        </li>
+        <li>
+          <span class="step-dot">5</span>
+          <div class="step-text">
+            <strong>المندوب يستلم ويوصّل للزبون</strong>
+          </div>
+        </li>
+        <li>
+          <span class="step-dot">6</span>
+          <div class="step-text">
+            <strong>تم التسليم + تقييم + تسوية مالية</strong>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>ماذا يشمل النظام؟</h2>
+
+      <div class="component">
+        <div class="component-title">📱 تطبيق الزبون</div>
+        <ul>
+          <li>تصفح حسب التصنيف (أي مجال تفعّله: مطعم، بقالة، صيدلية، …)</li>
+          <li>سلة وطلب — مع تحديد <strong>موقع التوصيل على الخريطة</strong> (إن اعتمدتم حساب التوصيل بالمسافة)</li>
+          <li>تتبع الطلب وتقييم التجربة</li>
+          <li>سجل الطلبات وإعادة الطلب</li>
+        </ul>
+      </div>
+
+      <div class="component">
+        <div class="component-title">🖥️ لوحة التاجر (المتجر / المحل)</div>
+        <ul>
+          <li>بيانات المحل و<strong>موقع المتجر على الخريطة</strong> (لحساب المسافة والتوصيل)</li>
+          <li>المنتجات، الأسعار، والتوفر</li>
+          <li>استقبال الطلبات وتحديث التجهيز</li>
+        </ul>
+      </div>
+
+      <div class="component">
+        <div class="component-title">🛵 تطبيق المندوب</div>
+        <ul>
+          <li>مهام التوصيل، الخريطة، تحديث الحالة، سجل الأرباح</li>
+        </ul>
+      </div>
+
+      <div class="component">
+        <div class="component-title">⚙️ لوحة الإدارة (لك)</div>
+        <ul>
+          <li>إدارة التجار والمندوبين والتصنيفات (أقسام التطبيق)</li>
+          <li>متابعة الطلبات وتوزيعها</li>
+          <li>إعدادات التوصيل والعمولات والتقارير</li>
+          <li>إدخال طلب نيابة عن الزبون (إن اعتمدتم الطلب بالهاتف)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>كيف تربح المنصة؟ (يُحدد معك)</h2>
+      <p style="font-size:0.95rem;color:var(--text-muted)">يمكن الجمع بين أكثر من طريقة — التفاصيل في السؤال 6:</p>
+      <div class="income-list">
+        <div class="income-item"><strong>عمولة</strong> على قيمة الطلب (يتحملها التاجر أو الزبون — نحددها)</div>
+        <div class="income-item"><strong>رسوم توصيل</strong> حسب المسافة (من موقع التاجر إلى موقع الزبون على الخريطة)</div>
+        <div class="income-item">رسوم توصيل <strong>ثابتة</strong> لكل منطقة (بدون حساب مسافة)</div>
+        <div class="income-item">اشتراك شهري للتجار (اختياري)</div>
+        <div class="income-item">تمييز متاجر في الصفحة الرئيسية</div>
+      </div>
+      <div class="highlight" style="margin-bottom:0;margin-top:1rem">
+        إذا اعتمدتم <strong>حساب التوصيل بالمسافة</strong>: يجب أن يحدد <strong>التاجر موقع متجره على الخريطة</strong>، و<strong>الزبون موقع التوصيل على الخريطة</strong> عند كل طلب — ليحسب النظام المسافة والرسوم تلقائياً.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>أسئلة نحتاج إجابتها</h2>
+      <p class="questions-intro">إجاباتك تحدد شكل التطبيق بدقة. لا مشكلة إن لم تكن متأكداً — نناقشها سوياً.</p>
+
+      <p class="q-section-title">عن نطاق المنصة</p>
+
+      <div class="question">
+        <span class="q-num">1</span>
+        <div>
+          <strong>هل المنصة «توصيل أي شيء» من أي مجال؟</strong>
+          <span class="hint">أم تبدأ بمجالات محددة (مثلاً مطاعم + بقالات فقط) ثم تتوسع لاحقاً؟ اذكر المجالات التي تريدها عند الإطلاق الأول — مثلاً: مطاعم، بقالات، صيدليات، محلات أخرى.</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="q-num">2</span>
+        <div>
+          <strong>السلة: طلب واحد من متجر واحد (الخيار أ)، أم يجمع الزبون من أكثر من متجر في طلب واحد (الخيار ب)؟</strong>
+          <span class="hint">راجع قسم «كيف تعمل السلة» أعلاه. نوصي بالخيار أ للبداية — أسرع، أوضح، وأقل مشاكل (خصوصاً للطعام).</span>
+        </div>
+      </div>
+
+      <p class="q-section-title">عن التشغيل والدفع</p>
+
+      <div class="question">
+        <span class="q-num">3</span>
+        <div>
+          <strong>ما طرق الدفع التي تريدها؟</strong>
+          <span class="hint">يمكن اختيار أكثر من واحدة: (1) <strong>نقد عند الاستلام</strong> — يدفع الزبون للمندوب عند التسليم. (2) <strong>دفع إلكتروني</strong> — بطاقة أو محفظة عبر بوابة دفع. (3) <strong>تحويل يدوي</strong> — الزبون يحوّل لحساب المنصة ويرفق <strong>رقم العملية + صورة الإيصال</strong> في التطبيق، وتوافقون من لوحة الإدارة قبل تجهيز الطلب.</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">4</span>
+        <div>
+          <strong>هل التوصيل داخل مدينة واحدة أم عدة مدن؟</strong>
+          <span class="hint">إذا عدة مدن: كل مدينة قد تحتاج تجارها، مندوبيها، وأسعار توصيلها بشكل منفصل. نحدد معك من أين نبدأ.</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">5</span>
+        <div>
+          <strong>كيف يُوزَّع الطلب على المندوبين؟</strong>
+          <span class="hint"><strong>طريقة 1 — مزاد / أول من يقبل:</strong> بعد ما يصبح الطلب «جاهز للاستلام»، يصل إشعار لكل المندوبين المتاحين، وأول مندوب يضغط «أستلم الطلب» يرتبط به.<br><strong>طريقة 2 — تعيين يدوي:</strong> موظفك من لوحة الإدارة يختار مندوباً محدداً لكل طلب.<br>يمكن أيضاً الجمع: تلقائي مع إمكانية تدخلك.</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">6</span>
+        <div>
+          <strong>كيف تربح من كل طلب؟</strong>
+          <span class="hint"><strong>أ) عمولة:</strong> نسبة أو مبلغ ثابت على قيمة الطلب — هل يدفعها <strong>التاجر</strong> أم <strong>الزبون</strong>؟<br><strong>ب) رسوم توصيل حسب المسافة:</strong> النظام يحسب المسافة بين <strong>موقع التاجر على الخريطة</strong> و<strong>موقع الزبون على الخريطة</strong> — لذلك يكون تحديد الموقع على الخريطة <strong>إلزامياً</strong> عند التسجيل (للتاجر) وعند كل طلب (للزبون).<br><strong>ج) رسوم ثابتة</strong> لكل منطقة بغض النظر عن المسافة.<br>يمكن الجمع بين (أ) و (ب) أو (ج).</span>
+        </div>
+      </div>
+
+      <p class="q-section-title">عن التطبيق والتجار</p>
+
+      <div class="question">
+        <span class="q-num">7</span>
+        <div>
+          <strong>هل التطبيق متعدد اللغات؟</strong>
+          <span class="hint">مثلاً: عربي فقط، أو عربي + إنجليزي. يؤثر على وقت التطوير والتكلفة.</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">8</span>
+        <div>
+          <strong>هل توجد اشتراكات شهرية للتجار؟</strong>
+          <span class="hint">أم الربح فقط من عمولة الطلبات ورسوم التوصيل؟ بعض المنصات تجمع بين الاثنين.</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">9</span>
+        <div>
+          <strong>هل تريد تتبع مباشر للمندوب على الخريطة؟</strong>
+          <span class="hint">الزبون يرى موقع المندوب وهو في الطريق. هل للزبون والإدارة معاً، أم للإدارة فقط؟</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">10</span>
+        <div>
+          <strong>هل كل تاجر يدير منتجاته بنفسه؟</strong>
+          <span class="hint">من لوحته يضيف الصور والأسعار. أم في البداية أنتم تدخلون المنتجات عن التجار حتى يعتادوا على النظام؟</span>
+        </div>
+      </div>
+      <div class="question">
+        <span class="q-num">11</span>
+        <div>
+          <strong>هل تريد نظام عروض؟</strong>
+          <span class="hint">يمكن تفعيل أكثر من نوع:<br>
+          • <strong>كوبون خصم</strong> من المنصة (أنت تتحمله)، أو من التاجر، أو الاثنين — مثال: كود خصم 10% على أول طلب.<br>
+          • <strong>خصم على التوصيل</strong> — مثال: توصيل مجاني أو خصم على رسوم التوصيل لمنطقة معينة.<br>
+          • <strong>عرض من متجر معيّن</strong> — مثال: خصم 10% من مطعم X لفترة محددة.<br>
+          • <strong>عروض داخل المتجر:</strong> عندما يدخل الزبون على صفحة متجر، يرى عروضاً على منتج معيّن (أو أكثر) — مثل «اشتري 2 واحصل على 1» أو سعر مخفّض على صنف محدد.</span>
+        </div>
+      </div>
+
+      <p class="q-section-title">عن المندوبين</p>
+
+      <div class="question">
+        <span class="q-num">12</span>
+        <div>
+          <strong>هل المندوبون يعملون بعمولة (مستقلون) أم موظفون براتب ثابت؟</strong>
+          <span class="hint"><strong>بعمولة:</strong> يأخذ المندوب نسبة أو مبلغاً من كل توصيلة — النظام يسجّل أرباحه ويطبّق تسوية يومية أو أسبوعية.<br><strong>براتب:</strong> موظفون عندك براتب شهري — التطبيق يتابع الطلبات والأداء فقط دون حساب عمولة تلقائي.<br>يمكن أيضاً مزيج: راتب أساسي + عمولة إضافية.</span>
+        </div>
+      </div>
+
+      <p class="q-section-title">عن طريقة الطلب</p>
+
+      <div class="question">
+        <span class="q-num">13</span>
+        <div>
+          <strong>«هل الزبون يطلب فقط من التطبيق، ولا يزال يتصل بالهاتف وتدخلون الطلب أنتم من عندكم في النظام؟»</strong>
+          <span class="hint">إذا نعم للهاتف: نضيف في لوحة الإدارة شاشة «إنشاء طلب للزبون» — موظفك يدخل بيانات الزبون والمتجر والمنتجات بعد الاتصال، ويمر الطلب بنفس المسار (تاجر → مندوب → توصيل).</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      تصور أولي لمشروع <strong>ساعى الأطلال</strong> — المطور <strong>عبدالله البكري</strong><br>
+      بعد إجاباتك نجهّز المواصفات التفصيلية وعرض السعر
+    </p>
+
+  </div>
+  </div>
+
+  <a href="questions-form.html" class="btn-print no-print" style="text-align:center;text-decoration:none;line-height:1.4;margin-bottom:0.75rem">تعبئة نموذج الأسئلة ←</a>
+  <button class="btn-print no-print" type="button" id="btnSavePdf">طباعة / حفظ PDF</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('btnSavePdf');
+      var pdfArea = document.getElementById('pdf-export');
+
+      btn.addEventListener('click', function () {
+        var label = btn.textContent;
+        btn.textContent = 'جاري إنشاء PDF...';
+        btn.disabled = true;
+
+        function done() {
+          btn.textContent = label;
+          btn.disabled = false;
+        }
+
+        function printFallback() {
+          window.print();
+          done();
+        }
+
+        if (typeof html2pdf === 'undefined') {
+          printFallback();
+          return;
+        }
+
+        document.fonts.ready.then(function () {
+          var opt = {
+            margin: [10, 10, 10, 10],
+            filename: 'ساعى-الأطلال-تصور-المشروع.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+              scale: 2,
+              useCORS: true,
+              letterRendering: true,
+              scrollY: 0,
+              windowWidth: pdfArea.scrollWidth
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
+            pagebreak: {
+              mode: ['avoid-all', 'css', 'legacy'],
+              avoid: ['.card', '.party-block', '.component', '.compare-box', '.question', '.timeline li', '.highlight', '.recommend-note']
+            }
+          };
+
+          html2pdf()
+            .set(opt)
+            .from(pdfArea)
+            .save()
+            .then(done)
+            .catch(function () {
+              printFallback();
+            });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
 
