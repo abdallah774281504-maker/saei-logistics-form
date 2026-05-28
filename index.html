@@ -536,7 +536,7 @@
               <textarea name="ملاحظات_اضافية" placeholder="أي فكرة أو طلب لم يُذكر في الأسئلة..."></textarea>
             </div>
           </div>
-          <div class="field-group" data-required="checkbox" data-name="المنصات_المطلوبة">
+          <div class="field-group" data-required="checkbox" data-name="المنصات_المطلوبة_اختيار">
 
             <label class="field-label">
               <span class="q-num">14</span>
@@ -555,22 +555,23 @@
             </label>
           
             <div class="inputs">
+              <input type="hidden" name="المنصات_المطلوبة" id="المنصات_المطلوبة_ملخص">
           
               <!-- العملاء -->
               <p class="q-section-title">تطبيق العملاء</p>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="1 - تطبيق أندرويد فقط">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="1 - تطبيق أندرويد فقط">
                 1 - تطبيق أندرويد فقط
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="2 - تطبيق أندرويد وآيفون">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="2 - تطبيق أندرويد وآيفون">
                 2 - تطبيق أندرويد وآيفون
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="3 - تطبيق + موقع إلكتروني للعملاء">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="3 - تطبيق + موقع إلكتروني للعملاء">
                 3 - تطبيق + موقع إلكتروني للعملاء
               </label>
           
@@ -578,17 +579,17 @@
               <p class="q-section-title">نظام التجار</p>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="لوحة تحكم ويب للتجار">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="لوحة تحكم ويب للتجار">
                 لوحة تحكم ويب للتجار
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="تطبيق للتجار">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="تطبيق للتجار">
                 تطبيق للتجار
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="لوحة تحكم ويب + تطبيق للتجار">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="لوحة تحكم ويب + تطبيق للتجار">
                 لوحة تحكم ويب + تطبيق للتجار
               </label>
           
@@ -596,17 +597,17 @@
               <p class="q-section-title">نظام المندوبين</p>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="تطبيق أندرويد للمندوبين">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="تطبيق أندرويد للمندوبين">
                 تطبيق أندرويد للمندوبين
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="لوحة ويب للمندوبين">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="لوحة ويب للمندوبين">
                 لوحة ويب للمندوبين
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="تطبيق + لوحة ويب للمندوبين">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="تطبيق + لوحة ويب للمندوبين">
                 تطبيق + لوحة ويب للمندوبين
               </label>
           
@@ -614,22 +615,22 @@
               <p class="q-section-title">نظام الإدارة</p>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="لوحة تحكم ويب للإدارة">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="لوحة تحكم ويب للإدارة">
                 لوحة تحكم ويب للإدارة
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="تطبيق للإدارة">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="تطبيق للإدارة">
                 تطبيق للإدارة
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="لوحة ويب + تطبيق للإدارة">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="لوحة ويب + تطبيق للإدارة">
                 لوحة ويب + تطبيق للإدارة
               </label>
           
               <label class="option">
-                <input type="checkbox" name="المنصات_المطلوبة" value="غير متأكد — أحتاج اقتراحكم">
+                <input type="checkbox" name="المنصات_المطلوبة_اختيار" value="غير متأكد — أحتاج اقتراحكم" id="platform_unsure">
                 غير متأكد — أحتاج اقتراحكم
               </label>
           
@@ -657,6 +658,9 @@
     (function () {
       var form = document.getElementById('requirementsForm');
       var submitBtn = form.querySelector('button[type="submit"]');
+      var platformChecks = form.querySelectorAll('input[name="المنصات_المطلوبة_اختيار"]');
+      var platformUnsure = document.getElementById('platform_unsure');
+      var platformsSummary = document.getElementById('المنصات_المطلوبة_ملخص');
 
       function getRadio(name) {
         var el = form.querySelector('input[name="' + name + '"]:checked');
@@ -701,7 +705,32 @@
         return ok;
       }
 
+      function syncPlatformsSummary() {
+        if (platformsSummary) {
+          platformsSummary.value = getCheckboxes('المنصات_المطلوبة_اختيار');
+        }
+      }
+
+      function syncPlatformUnsureBehavior(changedEl) {
+        if (!platformUnsure) return;
+        if (changedEl === platformUnsure && platformUnsure.checked) {
+          for (var i = 0; i < platformChecks.length; i++) {
+            if (platformChecks[i] !== platformUnsure) platformChecks[i].checked = false;
+          }
+        } else if (changedEl !== platformUnsure && changedEl.checked) {
+          platformUnsure.checked = false;
+        }
+        syncPlatformsSummary();
+      }
+
+      for (var p = 0; p < platformChecks.length; p++) {
+        platformChecks[p].addEventListener('change', function () {
+          syncPlatformUnsureBehavior(this);
+        });
+      }
+
       form.addEventListener('submit', function (e) {
+        syncPlatformsSummary();
         if (!validate()) {
           e.preventDefault();
           var first = form.querySelector('.field-group.invalid');
